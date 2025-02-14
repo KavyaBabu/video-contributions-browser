@@ -6,7 +6,7 @@ services:
       context: ./server
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - "3000:3000"
     volumes:
       - ./server:/app
     environment:
@@ -18,7 +18,7 @@ services:
       context: ./ui
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "8080:80"
     volumes:
       - ./ui:/app
       - /app/node_modules

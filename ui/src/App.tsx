@@ -223,7 +223,7 @@ const App: React.FC = () => {
         const searchQuery = searchTerm ? `&title=${searchTerm}` : '';
         const sortQuery = `&order_by=${filters.sort}`;
         const response = await fetch(
-          `http://127.0.0.1:8000/contributions/?skip=${skip}&limit=${contributionsPerPage}${searchQuery}${sortQuery}`
+          `http://localhost:3000/contributions/?skip=${skip}&limit=${contributionsPerPage}${searchQuery}${sortQuery}`
         );
         const data = await response.json();
         let filteredData = data.contributions;
