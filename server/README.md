@@ -6,7 +6,7 @@
 
 ## Running the server
 
-`fastapi dev main.py`
+`uvicorn main:app --reload`
 
 Default will LISTEN on port localhost:8000
 
