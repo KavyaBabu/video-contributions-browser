@@ -17,9 +17,10 @@ interface LayoutProps {
   setSearchTerm: (value: string) => void;
   filters: { status: string; sort: string };
   setFilters: (value: any) => void;
+  setPage: (value: any) => void;
 }
 
-const Layout: React.FC<LayoutProps> = ({ searchTerm, setSearchTerm, filters, setFilters }) => {
+const Layout: React.FC<LayoutProps> = ({ searchTerm, setSearchTerm, filters, setFilters, setPage }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -42,15 +43,15 @@ const Layout: React.FC<LayoutProps> = ({ searchTerm, setSearchTerm, filters, set
           )}
 
           <Typography variant="h6" sx={{ fontWeight: 700, flexShrink: 0, color: "white" }}>
-            News Contributions
+            Video Contributions
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: "flex", justifyContent: "center", width: isMobile ? "100%" : "auto" }}>
+          <Box sx={{ flexGrow: 1, display: "flex", justifyContent: "center", width: "100%" }}>
             <TextField
               variant="outlined"
               size="small"
               fullWidth={isMobile}
-              placeholder="Search..."
+              placeholder="Find contributions by title, description, or owner..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               InputProps={{
@@ -58,7 +59,7 @@ const Layout: React.FC<LayoutProps> = ({ searchTerm, setSearchTerm, filters, set
                 sx: { color: "white" },
               }}
               sx={{
-                minWidth: 240,
+                minWidth: isMobile ? "100%" : "450px",
                 bgcolor: "rgba(255, 255, 255, 0.15)",
                 borderRadius: 1,
                 input: { color: "white" },
@@ -71,8 +72,9 @@ const Layout: React.FC<LayoutProps> = ({ searchTerm, setSearchTerm, filters, set
             />
           </Box>
 
+
           <Box sx={{ display: "flex", alignItems: "center", color: "white", flexDirection: isMobile ? "column" : "row" }}>
-            <Filters filters={filters} setFilters={setFilters} />
+            <Filters filters={filters} setFilters={setFilters} setPage={setPage}/>
           </Box>
         </Toolbar>
       </AppBar>

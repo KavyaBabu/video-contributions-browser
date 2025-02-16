@@ -4,9 +4,15 @@ import { FormControl, InputLabel, MenuItem, Select, Box } from "@mui/material";
 interface FiltersProps {
   filters: { status: string; sort: string };
   setFilters: (filters: any) => void;
+  setPage: (page: number) => void; 
 }
 
-const Filters: React.FC<FiltersProps> = ({ filters, setFilters }) => {
+const Filters: React.FC<FiltersProps> = ({ filters, setFilters, setPage }) => {
+
+  const handleFilterChange = (field: string, value: string) => {
+    setFilters((prev: any) => ({ ...prev, [field]: value }));
+    setPage(1);
+  };
   return (
     <Box sx={{ display: "flex", gap: 2 }}>
       <FormControl size="small" sx={{ minWidth: 140}}>
@@ -14,7 +20,7 @@ const Filters: React.FC<FiltersProps> = ({ filters, setFilters }) => {
         <Select
           value={filters.status}
           label="Status"
-          onChange={(e) => setFilters((prev: any) => ({ ...prev, status: e.target.value }))}
+          onChange={(e) => handleFilterChange("status", e.target.value)}
           sx={{
             color: "white", 
             "& .MuiSelect-icon": {
@@ -48,7 +54,7 @@ const Filters: React.FC<FiltersProps> = ({ filters, setFilters }) => {
         <Select
           value={filters.sort}
           label="Sort By"
-          onChange={(e) => setFilters((prev: any) => ({ ...prev, sort: e.target.value }))}
+          onChange={(e) => handleFilterChange("sort", e.target.value)}
           sx={{
             color: "white", 
             "& .MuiSelect-icon": {

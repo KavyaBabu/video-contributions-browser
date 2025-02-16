@@ -29,6 +29,7 @@ const App: React.FC = () => {
             setSearchTerm={setSearchTerm}
             filters={filters}
             setFilters={setFilters}
+            setPage={setPage}
           />
         </Box>
 
@@ -72,6 +73,7 @@ const App: React.FC = () => {
             </Grid>
           )}
 
+        {contributions.length !== 0 && (
           <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
             <Pagination 
               count={totalPages} 
@@ -80,6 +82,7 @@ const App: React.FC = () => {
               sx={{ my: 4 }}
             />
           </Box>
+        )}
         </Box>
       </Box>
     </ThemeProvider>
