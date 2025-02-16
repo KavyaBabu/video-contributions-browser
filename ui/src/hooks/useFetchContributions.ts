@@ -42,7 +42,7 @@ export const useFetchContributions = (searchTerm: string, page: number, filters:
         }
 
         const response = await fetch(
-          `http://127.0.0.1:8000/contributions/?${params.toString()}`
+          `http://localhost:3000/contributions/?${params.toString()}`
         );
         
         const data = await response.json();
