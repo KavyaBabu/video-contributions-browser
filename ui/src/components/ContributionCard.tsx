@@ -13,21 +13,24 @@ const ContributionCard = ({ contribution }: { contribution: any }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
+      style={{ height: "100%" }}
     >
       <Card 
-      sx={{ 
-        borderLeft: `3px solid ${status.bgColor}`, 
-        position: "relative", 
-        height: `100%`,
-        minHeight: 280,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+        sx={{ 
+          borderLeft: `3px solid ${status.bgColor}`, 
+          position: "relative", 
+          height: "100%",
+          minHeight: 280,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          transition: "transform 0.3s ease, box-shadow 0.3s ease",
           "&:hover": {
             transform: "scale(1.02)",
             boxShadow: 4,
-          } }}>
+          }
+        }}
+      >
         <StatusBadge status={status.label} bgColor={status.bgColor} />
         <CardContent>
           <Typography variant="h6">{title}</Typography>
@@ -44,7 +47,6 @@ const ContributionCard = ({ contribution }: { contribution: any }) => {
         </CardContent>
       </Card>
     </motion.div>
-   
   );
 };
 

@@ -44,9 +44,28 @@ const App: React.FC = () => {
               </Typography>
             </Box>
           ) : (
-            <Grid container spacing={3} justifyContent="center" sx={{ width: "100%", flexWrap: "wrap" }}>
+            <Grid 
+              container 
+              spacing={3} 
+              sx={{ 
+                width: "100%",
+                margin: 0,
+                display: "grid",
+                gridTemplateColumns: {
+                  xs: "1fr",
+                  sm: "repeat(2, 1fr)",
+                  md: "repeat(3, 1fr)"
+                },
+                gap: 3,
+                "& > .MuiGrid-item": {
+                  padding: 0,
+                  width: "100%",
+                  margin: 0,
+                }
+              }}
+            >
               {contributions.map((contribution) => (
-                <Grid item xs={12} sm={6} md={4} key={contribution.id}>
+                <Grid item key={contribution.id}>
                   <ContributionCard contribution={contribution} />
                 </Grid>
               ))}
@@ -62,7 +81,6 @@ const App: React.FC = () => {
             />
           </Box>
         </Box>
-
       </Box>
     </ThemeProvider>
   );
