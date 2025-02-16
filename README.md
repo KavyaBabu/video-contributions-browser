@@ -110,12 +110,12 @@ You can set up the project either traditionally or using **Docker** for quick de
 
 ```
 project-root/
-├── ui/                         # Frontend React application
-│   ├── src/                    # Source code for the frontend
+├── ui/                         
+│   ├── src/                   
 │   ├── Dockerfile              # Dockerfile for the frontend image
-│   └── package.json            # Dependencies and build scripts for frontend
+│   └── package.json           
 ├── server/                     # Backend service
-│   ├── src/                    # Source code for the backend
+│   ├── src/                    
 │   └── Dockerfile              # Dockerfile for the backend image
 └── docker-compose.yml          # Configuration to run frontend and backend together
 ```
