@@ -70,7 +70,7 @@ You can set up the project either traditionally or using **Docker** for quick de
 2. **Start the backend server**:
    - Ensure you are in the `server` directory, then run:
      ```bash
-     uvicorn main:app --reload # On Windows
+     uvicorn main:app --reload
      ```
 
 ### Option 2: Docker Setup (Recommended)
