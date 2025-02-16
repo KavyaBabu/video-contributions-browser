@@ -21,13 +21,13 @@ const TimeBadge: React.FC<TimeBadgeProps> = ({ startTime, endTime }) => {
           <Typography variant="caption" color="text.secondary">
             Starts
           </Typography>
-          <Typography variant="body2">{new Date(startTime).toLocaleDateString()}</Typography>
+          <Typography variant="body2">{new Date(startTime).toLocaleString()}</Typography>
         </div>
         <div>
           <Typography variant="caption" color="text.secondary">
             Ends
           </Typography>
-          <Typography variant="body2">{new Date(endTime).toLocaleDateString()}</Typography>
+          <Typography variant="body2">{new Date(endTime).toLocaleString()}</Typography>
         </div>
       </Box>
     </Box>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ThemeProvider, Box, Grid, CircularProgress, Pagination } from "@mui/material";
+import { ThemeProvider, Box, Grid, CircularProgress, Pagination, Typography } from "@mui/material";
 import { theme } from "./theme";
 import ContributionCard from "./components/ContributionCard";
 import { useFetchContributions } from "./hooks/useFetchContributions";
@@ -37,8 +37,14 @@ const App: React.FC = () => {
             <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
               <CircularProgress />
             </Box>
+          ) : contributions.length === 0 ? (
+            <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
+              <Typography variant="h6" color="text.secondary">
+                No contributions found
+              </Typography>
+            </Box>
           ) : (
-            <Grid container spacing={3} justifyContent="center">
+            <Grid container spacing={3} justifyContent="center" sx={{ width: "100%", flexWrap: "wrap" }}>
               {contributions.map((contribution) => (
                 <Grid item xs={12} sm={6} md={4} key={contribution.id}>
                   <ContributionCard contribution={contribution} />
@@ -48,9 +54,15 @@ const App: React.FC = () => {
           )}
 
           <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
-            <Pagination count={totalPages} page={page} onChange={(_, value) => setPage(value)} />
+            <Pagination 
+              count={totalPages} 
+              page={page} 
+              onChange={(_, value) => setPage(value)}
+              sx={{ my: 4 }}
+            />
           </Box>
         </Box>
+
       </Box>
     </ThemeProvider>
   );

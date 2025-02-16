@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Contribution, getContributionStatus } from "../utils/getStatus";
+import { Contribution } from "../utils/types";
 
 export const useFetchContributions = (searchTerm: string, page: number, filters: any) => {
   const [contributions, setContributions] = useState<Contribution[]>([]);
@@ -13,20 +13,41 @@ export const useFetchContributions = (searchTerm: string, page: number, filters:
       try {
         setLoading(true);
         const skip = (page - 1) * contributionsPerPage;
-        const response = await fetch(
-          `http://127.0.0.1:8000/contributions/?skip=${skip}&limit=${contributionsPerPage}&title=${searchTerm}&order_by=${filters.sort}`
-        );
-        const data = await response.json();
+        
+        const params = new URLSearchParams({
+          skip: skip.toString(),
+          limit: contributionsPerPage.toString(),
+          order_by: filters.sort,
+        });
 
-        let filteredData = data.contributions;
-        if (filters.status !== "all") {
-          filteredData = filteredData.filter(
-            (contribution: Contribution) =>
-              getContributionStatus(contribution.startTime, contribution.endTime).label.toLowerCase() === filters.status
-          );
+        if (searchTerm) {
+          params.append('title', searchTerm);
+          params.append('description', searchTerm);
+          params.append('owner', searchTerm);
+          params.append('match', 'any');
+        }
+        
+        const now = new Date().toISOString();
+        switch (filters.status) {
+          case 'active':
+            params.append('startBefore', now);
+            params.append('endAfter', now);
+            break;
+          case 'scheduled':
+            params.append('startAfter', now);
+            break;
+          case 'complete':
+            params.append('endBefore', now);
+            break;
         }
 
-        setContributions(filteredData);
+        const response = await fetch(
+          `http://127.0.0.1:8000/contributions/?${params.toString()}`
+        );
+        
+        const data = await response.json();
+        
+        setContributions(data.contributions);
         setTotalPages(Math.ceil(data.total / contributionsPerPage));
       } catch (error) {
         console.error("Error fetching contributions:", error);

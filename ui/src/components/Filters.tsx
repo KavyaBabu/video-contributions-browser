@@ -9,12 +9,32 @@ interface FiltersProps {
 const Filters: React.FC<FiltersProps> = ({ filters, setFilters }) => {
   return (
     <Box sx={{ display: "flex", gap: 2 }}>
-      <FormControl size="small" sx={{ minWidth: 140 }}>
-        <InputLabel>Status</InputLabel>
+      <FormControl size="small" sx={{ minWidth: 140}}>
+        <InputLabel sx={{ color: "white" }}>Status</InputLabel>
         <Select
           value={filters.status}
           label="Status"
           onChange={(e) => setFilters((prev: any) => ({ ...prev, status: e.target.value }))}
+          sx={{
+            color: "white", 
+            "& .MuiSelect-icon": {
+              color: "white", 
+            },
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "white",
+              },
+              "&:hover fieldset": {
+                borderColor: "white",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "white", 
+              },
+            },
+            "& .MuiMenuItem-root": {
+              color: "white",
+            },
+          }}
         >
           <MenuItem value="all">All</MenuItem>
           <MenuItem value="active">Active</MenuItem>
@@ -24,12 +44,30 @@ const Filters: React.FC<FiltersProps> = ({ filters, setFilters }) => {
       </FormControl>
 
       <FormControl size="small" sx={{ minWidth: 140 }}>
-        <InputLabel>Sort By</InputLabel>
+        <InputLabel sx={{ color: "white" }}>Sort By</InputLabel>
         <Select
           value={filters.sort}
           label="Sort By"
           onChange={(e) => setFilters((prev: any) => ({ ...prev, sort: e.target.value }))}
+          sx={{
+            color: "white", 
+            "& .MuiSelect-icon": {
+              color: "white", 
+            },
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "white",
+              },
+              "&:hover fieldset": {
+                borderColor: "white",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "white", 
+              },
+            }
+          }}
         >
+          <MenuItem value="id">ID</MenuItem>
           <MenuItem value="title">Title</MenuItem>
           <MenuItem value="startTime">Start Time</MenuItem>
           <MenuItem value="endTime">End Time</MenuItem>

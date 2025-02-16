@@ -19,6 +19,10 @@ const ContributionCard = ({ contribution }: { contribution: any }) => {
         borderLeft: `3px solid ${status.bgColor}`, 
         position: "relative", 
         height: `100%`,
+        minHeight: 280,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
         transition: "transform 0.3s ease, box-shadow 0.3s ease",
           "&:hover": {
             transform: "scale(1.02)",
