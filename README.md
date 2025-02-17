@@ -116,7 +116,6 @@ project-root/
 └── docker-compose.yml          # Configuration to run frontend and backend together
 ```
 ![image](https://github.com/user-attachments/assets/acf5c936-934e-4526-b4b7-d944e8ef1e81)
-![image](https://github.com/user-attachments/assets/5d9016d7-886d-4f66-8139-8f1dd1aaf0ae)
 ![image](https://github.com/user-attachments/assets/58eda0d2-3004-493e-913a-c620273d6481)
 
 
